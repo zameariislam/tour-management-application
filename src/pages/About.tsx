@@ -1,38 +1,12 @@
 
-
- export default function about ()  {
+ export default function About ()  {
   return (
-    <div className="container  bg-yellow-200 max-w-7xl  mx-auto px-4" > 
-        <h1>This is about page</h1>
+    <div className="px-4 py-16 container mx-auto">
+      <h1>This is  About Page</h1>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore vitae corporis hic! Et ipsa sit voluptas blanditiis perspiciatis aut illo consectetur provident quae error deleniti harum maiores beatae maxime voluptates, aliquam tempora, doloremque cumque dicta nesciunt quaerat voluptatem. Cumque ut veniam aperiam mollitia velit tempora labore, rerum quos nostrum cum! Laborum ipsum in amet quidem architecto praesentium eaque non quasi libero omnis iure ex dolore inventore, accusantium ad quod porro, eligendi vero unde sunt odio dolorem dolor. Vitae veritatis necessitatibus numquam dolor sapiente? Ab accusamus tenetur, vel ipsa consectetur quia commodi dicta consequuntur doloremque, sed nisi, distinctio architecto. Cupiditate, vel.
 
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.  quo nihil accusantium suscipit 
-            incidunt dicta ipsam sapiente. Cupiditate laboriosam nisi tenetur, dolor odit soluta veritatis maiores
-            molestiae tempora impedit neque quod consequuntur ipsa, id minima error nobis eos, fugiat
-             dolorum qui nihil nam accusantium. Consectetur dignissimos assumenda quod, nulla 
-             saepe explicabo? Voluptatum nobis sunt esse quasi itaque, ipsa necessitatibus eum porro poss
 
-             imus debitis aut aspernatur tempora sint fugit nemo sequi consequuntur fuga reiciendis enim non nulla. Po
-             ssimus, omnis iusto libero, voluptate sequi quos expedita repudiandae hic modi harum sunt. Dolore deserunt totam laborum eveniet amet saep
-             e dicta. Porro impedit minima deleniti, est fuga ullam quidem.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.  quo nihil accusantium suscipit 
-            incidunt dicta ipsam sapiente. Cupiditate laboriosam nisi tenetur, dolor odit soluta veritatis maiores
-            molestiae tempora impedit neque quod consequuntur ipsa, id minima error nobis eos, fugiat
-             dolorum qui nihil nam accusantium. Consectetur dignissimos assumenda quod, nulla 
-             saepe explicabo? Voluptatum nobis sunt esse quasi itaque, ipsa necessitatibus eum porro poss
-
-             imus debitis aut aspernatur tempora sint fugit nemo sequi consequuntur fuga reiciendis enim non nulla. Po
-             ssimus, omnis iusto libero, voluptate sequi quos expedita repudiandae hic modi harum sunt. Dolore deserunt totam laborum eveniet amet saep
-             e dicta. Porro impedit minima deleniti, est fuga ullam quidem.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.  quo nihil accusantium suscipit 
-            incidunt dicta ipsam sapiente. Cupiditate laboriosam nisi tenetur, dolor odit soluta veritatis maiores
-            molestiae tempora impedit neque quod consequuntur ipsa, id minima error nobis eos, fugiat
-             dolorum qui nihil nam accusantium. Consectetur dignissimos assumenda quod, nulla 
-             saepe explicabo? Voluptatum nobis sunt esse quasi itaque, ipsa necessitatibus eum porro poss
-
-             imus debitis aut aspernatur tempora sint fugit nemo sequi consequuntur fuga reiciendis enim non nulla. Po
-             ssimus, omnis iusto libero, voluptate sequi quos expedita repudiandae hic modi harum sunt. Dolore deserunt totam laborum eveniet amet saep
-             e dicta. Porro impedit minima deleniti, est fuga ullam quidem.</p>
-               
     </div>
+    
   );
 };
