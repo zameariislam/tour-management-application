@@ -11,6 +11,7 @@ import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, For
 import Password from "@/components/ui/Password"
 import { useRegisterMutation } from "@/redux/features/auth/auth.api"
 import { toast } from "sonner"
+import { useNavigate } from "react-router"
 
 
 
@@ -24,6 +25,9 @@ export function RegisterForm({
 }: React.HTMLAttributes<HTMLDivElement>) {
 
   const[ register, ]=useRegisterMutation();
+
+
+    const  navigate=useNavigate();
 
    
 
@@ -73,6 +77,9 @@ const onSubmit=  async(values: z.infer<typeof registerSchema>)=> {
     toast.success('User Created Successfully')
 
      console.log('resuilt',result)
+     if(result.success){
+      navigate('/verify')
+     }
 
   }catch(error:any){
      

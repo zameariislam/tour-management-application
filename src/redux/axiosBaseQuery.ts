@@ -17,6 +17,7 @@ import type { AxiosRequestConfig, AxiosError } from 'axios'
   > =>
   async ({ url, method, data, params, headers }) => {
     try {
+       console.log('data',data)
       const result = await axiosInstance({
         url: url,
         method,
