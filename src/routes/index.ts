@@ -2,6 +2,7 @@ import App from "@/App";
 import AdminLayout from "@/components/layout/AdminLayout";
 import About from "@/pages/About";
 import Analytics from "@/pages/Analytics";
+import Register from "@/pages/Register";
 import { createBrowserRouter } from "react-router";
 
 
@@ -22,6 +23,11 @@ import { createBrowserRouter } from "react-router";
             { path:'analytics', Component:Analytics}
         ]
        
+    },
+       {
+        path:'/register',
+        Component:Register,
+        
     }
 
  ])
