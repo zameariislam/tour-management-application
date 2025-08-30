@@ -28,6 +28,11 @@ import { createBrowserRouter } from "react-router";
         path:'/register',
         Component:Register,
         
+    },
+    {
+        path:'/login',
+        Component:Register,
+        
     }
 
  ])
