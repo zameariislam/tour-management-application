@@ -15,12 +15,13 @@ import { useLoginMutation } from "@/redux/features/auth/auth.api";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 
+
 import { useForm } from "react-hook-form";
 
 
 import { Link, useNavigate} from "react-router";
 import { toast } from "sonner";
-import z from "zod";
+import z, { email } from "zod";
 
 const loginSchema = z.object({
    email: z.email(),
@@ -51,11 +52,14 @@ export function LoginForm({
   const onSubmit= async(values: z.infer<typeof loginSchema>)=> {
     try {
 
-         console.log('user',values)
+     
       const res = await login(values).unwrap();
+
+       console.log('res from loggedin',res)
 
       if (res.success) {
         toast.success("Logged in successfully");
+        navigate('/')
          
        
       }
@@ -63,10 +67,13 @@ export function LoginForm({
       console.error(err);
 
       if (err.data.message === "Password does not match") {
+            navigate('/login')
         toast.error("Invalid credentials");
       }
-       if (err.status ===401) {
-        toast.error('Your account is not Verified');
+       if (err.data.message==="User does not Verified")
+ {
+         console.log('error from login',err)
+    
             navigate('/verify', {state:{email:values.email}})
    
       }
@@ -74,6 +81,10 @@ export function LoginForm({
       
     }
   };
+
+
+
+ 
 
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
