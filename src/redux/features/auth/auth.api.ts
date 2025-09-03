@@ -7,7 +7,7 @@ import type { ISendOtp, IVerifyOtp } from '@/types/auth.type'
 
 
 
-export const authApi = baseApi.injectEndpoints({
+ export const authApi = baseApi.injectEndpoints({
     endpoints:(builder)=>({
 
         register:builder.mutation({
@@ -23,6 +23,14 @@ export const authApi = baseApi.injectEndpoints({
                 url:'/auth/login',
                 method:'POST',
                 data:userInfo
+
+            })
+        }),
+         logout:builder.mutation({
+            query:()=>({
+                url:'/auth/logout',
+                method:'POST',
+              
 
             })
         }),
@@ -43,9 +51,18 @@ export const authApi = baseApi.injectEndpoints({
 
             })
         }),
+         userInfo:builder.query({
+            query:()=>({
+                url:'/user/me',
+                method:'GET',
+              
+
+            })
+        }),
+        
         
     })
 })
 
 
-export  const { useRegisterMutation,useLoginMutation,useSendOtpMutation,useVerifyOtpMutation} =authApi
+export  const { useRegisterMutation,useLoginMutation,useSendOtpMutation,useVerifyOtpMutation,useUserInfoQuery,useLogoutMutation} =authApi

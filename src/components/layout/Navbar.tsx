@@ -10,15 +10,44 @@ import { Button } from "../ui/Button"
 import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from "../ui/navigation-menu"
 import { ModeToggler } from "./ModeToggler"
 import { Link } from "react-router"
+import { authApi, useLogoutMutation, useUserInfoQuery } from "@/redux/features/auth/auth.api"
+import { useDispatch } from "react-redux"
+import { role } from "@/constants/role"
+
 
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
-  { href: "/", label: "Home"},
-  { href: "about", label: "About" },
+  { href: "/", label: "Home",role:'PUBLIC' },
+  { href: "/about", label: "About", role:'PUBLIC'},
+  { href: "/admin", label: "Dashboard",role: role.admin},
+  { href: "/user", label: "Dashboard", role:role.user},
+
 
 ]
 
 export default function Navbar() {
+  const[logout]=useLogoutMutation()
+
+  const dispatch= useDispatch()
+
+   const { data}=useUserInfoQuery(undefined)
+
+    console.log('me',data)
+
+   
+
+     const handleLogout= async ()=>{
+
+      await logout(undefined)
+      dispatch(authApi.util.resetApiState())
+       
+       
+
+
+     }
+
+ 
+
   return (
     <header className="border-b">
       <div className=" container  mx-auto  px-4   flex h-16 items-center justify-between gap-4">
@@ -87,7 +116,8 @@ export default function Navbar() {
             <NavigationMenu className="max-md:hidden">
               <NavigationMenuList className="gap-2">
                 {navigationLinks.map((link, index) => (
-                  <NavigationMenuItem key={index}>
+                  <> 
+                   {link.role==='PUBLIC'  &&  <NavigationMenuItem key={index}>
                     <NavigationMenuLink
                    
                      
@@ -98,7 +128,28 @@ export default function Navbar() {
                       </Link>
                     
                     </NavigationMenuLink>
-                  </NavigationMenuItem>
+                  </NavigationMenuItem>}
+                  
+                   {link.role===data?.data?.role  &&  <NavigationMenuItem key={index}>
+                    <NavigationMenuLink
+                   
+                     
+                      className="text-muted-foreground hover:text-primary py-1.5 font-medium"
+                    >
+                      <Link to={link.href}>
+                        {link.label}
+                      </Link>
+                    
+                    </NavigationMenuLink>
+                  </NavigationMenuItem>}
+
+
+                 
+            
+                   
+                  </>
+                  
+                 
                 ))}
               </NavigationMenuList>
             </NavigationMenu>
@@ -108,10 +159,17 @@ export default function Navbar() {
         <div className="flex items-center gap-2">
 
         <ModeToggler/>
-        
-          <Button asChild  className="text-sm">
+
+        { data?.data?.email?( <Button  variant="outline"  onClick={handleLogout} className="text-sm">
+          Logout
+          </Button>):( <Button asChild  className="text-sm">
            <Link to={'/login'}>Login</Link>
-          </Button>
+          </Button>)
+         
+        }
+        
+         
+          
         </div>
       </div>
     </header>
