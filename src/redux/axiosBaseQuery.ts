@@ -28,6 +28,8 @@ import type { AxiosRequestConfig, AxiosError } from 'axios'
       return { data: result.data }
     } catch (axiosError) {
       const err = axiosError as AxiosError
+
+       console.log('error fro base',err)
       return {
         error: {
           status: err.response?.status,

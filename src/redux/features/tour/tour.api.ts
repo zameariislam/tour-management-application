@@ -21,6 +21,17 @@ import { baseApi } from '@/redux/baseApi'
          
             
         }),
+         removeTourType:builder.mutation({
+            query:(tourTypeId)=>({
+                url:`tour/tour-types/${tourTypeId}`,
+                method:'DELETE',
+                data:tourTypeId
+
+            }),
+            invalidatesTags:['Tour']
+         
+            
+        }),
         
         
          getTourTypes:builder.query({
@@ -33,10 +44,23 @@ import { baseApi } from '@/redux/baseApi'
             transformResponse:(response)=>response.data,
             providesTags:['Tour']
         }),
+
+        
+         addTour:builder.mutation({
+            query:(tourData)=>({
+                url:'/tour/create',
+                method:'POST',
+                data:tourData
+
+            }),
+            invalidatesTags:[]
+         
+            
+        }),
     
         
     })
 })
 
 
-export  const { useAddTourTypeMutation,useGetTourTypesQuery} =tourApi
+export  const { useAddTourTypeMutation,useGetTourTypesQuery,useRemoveTourTypeMutation,useAddTourMutation} =tourApi

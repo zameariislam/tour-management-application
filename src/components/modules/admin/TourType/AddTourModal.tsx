@@ -19,7 +19,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+
 import { useAddTourTypeMutation } from "@/redux/features/tour/tour.api";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -47,27 +47,29 @@ export function AddTourModal() {
 
          const onSubmit= async(values: z.infer<typeof tourTypeSchema>)=> {
 
+
+          const toastId=toast.loading('Creating ...')
+
           try{
              
 
             const  res= await addTourType(values).unwrap()
             
-                  if (res?.data?.success) {
+               
                     toast.success("Tour Type Created successfully");
                  
-                     
-                   
-                  }
+      
           
 
-          }catch(err){
-              if (err?.data?.message==="User does not Verified")
-      {
-         console.log('error from login',err)
+          }catch(error:any){
+             
+             toast.error(error?.data?.message, {id:toastId})
+      
+         console.log('error from login',error )
     
             
    
-      }
+      
 
           }
         
